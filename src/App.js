@@ -1,14 +1,12 @@
 import styled from "styled-components";
 import React from "react";
 import Sidebar from "./components/Sidebar";
-import Main from "./Main";
 
 const App = () => {
   return (
     <AppWrapper>
       <AppBody>
         <Sidebar />
-        <Main />
       </AppBody>
     </AppWrapper>
   );
