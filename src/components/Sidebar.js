@@ -5,6 +5,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SearchSharpIcon from "@material-ui/icons/SearchSharp";
 import { Avatar, IconButton } from "@material-ui/core";
+import SidebarCaht from "./SidebarCaht";
 
 const Sidebar = () => {
   return (
@@ -29,7 +30,12 @@ const Sidebar = () => {
           <input type="text" placeholder="search or start a new room" />
         </SidebarSearchContainer>
       </SidebarSearch>
-      <SidebarChat>ok</SidebarChat>
+
+      <SidebarCahtContainer>
+        <h1>Add new Room</h1>
+        <SidebarCaht />
+        <SidebarCaht />
+      </SidebarCahtContainer>
     </SidebarWrapper>
   );
 };
@@ -77,6 +83,7 @@ const SidebarSearchContainer = styled.div`
   width: 100%;
   height: 35px;
   border-radius: 30px;
+
   .MuiSvgIcon-root {
     color: gray;
     margin: 0 10px;
@@ -96,6 +103,7 @@ const SidebarSearchContainer = styled.div`
   }
 `;
 
-const SidebarChat = styled.div`
-  display: flex;
+const SidebarCahtContainer = styled.div`
+  flex: 1;
+  /* overflow: scroll; */
 `;

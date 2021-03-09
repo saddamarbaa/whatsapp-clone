@@ -1,27 +1,22 @@
 import styled from "styled-components";
 import React from "react";
+import Sidebar from "./components/Sidebar";
+import Main from "./Main";
 
 const App = () => {
   return (
-    <Wrapper>
-      <AppContainer>
-        <AppBody>ok hello</AppBody>
-      </AppContainer>
-    </Wrapper>
+    <AppWrapper>
+      <AppBody>
+        <Sidebar />
+        <Main />
+      </AppBody>
+    </AppWrapper>
   );
 };
 
 export default App;
 
-const Wrapper = styled.div`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-`;
-
-const AppContainer = styled.div`
+const AppWrapper = styled.div`
   background-color: lightblue;
   height: 100vh;
   display: flex;
@@ -30,6 +25,7 @@ const AppContainer = styled.div`
 `;
 
 const AppBody = styled.div`
+  display: flex;
   background-color: #ededed;
   height: 90vh;
   width: 90vw;
