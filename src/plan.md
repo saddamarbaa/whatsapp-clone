@@ -1,0 +1,7 @@
+-- React
+-- Firebase Real Time DB
+-- Metrial UI
+-- React ConText API
+-- REDUX
+-- Google Authentication
+-- Deploy Using Firebase
