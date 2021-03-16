@@ -27,7 +27,7 @@ const Chat = () => {
 				</ChatHeaderRight>
 			</ChatHeader>
 
-			<ChatBody> body</ChatBody>
+			<ChatBody> For test</ChatBody>
 			<ChatFooter>footer</ChatFooter>
 		</ChatWrapper>
 	);
@@ -68,6 +68,16 @@ const ChatHeaderRight = styled.div`
 	background: pink;
 `;
 
-const ChatBody = styled.div``;
+const ChatBody = styled.div`
+	background: url("https://fsa.zobj.net/crop.php?r=HPh6XjS0Se_VNODSUR6Fm1R9bTHZZaIQV6BsKvbihNqsgOSM3Ftm58HrQ7nlrF9R65nUhHXkiA34Cu7Y-5-p1HjQHAcMj7SGoQS1XmK8i_Su-brIg-80w-9HV-s5c4w8z4JjR8VarCwJf8G_O4NlM5gHNQF7uHvtbJqCEL3X3fXhBsF3EdkZTrdef64jzBx9PwjBSJ23C_QtWaUi")
+		repeat center center;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 30px;
+	overflow: scroll;
+`;
 
-const ChatFooter = styled.div``;
+const ChatFooter = styled.div`
+	height: 62px;
+`;
