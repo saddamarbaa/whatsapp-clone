@@ -1,37 +1,69 @@
+/** @format */
+
 import { Avatar } from "@material-ui/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import styled from "styled-components";
 
-const SidebarCaht = () => {
-  return (
-    <SidebarCahtWrapper>
-      <Avatar />
-      <SidebarCahtInfo>
-        <h2>Room name</h2>
-        <p>last message </p>
-      </SidebarCahtInfo>
-    </SidebarCahtWrapper>
-  );
+const SidebarCaht = ({ AddNewChat }) => {
+	const [seed, setseed] = useState("");
+
+	useEffect(() => {
+		const seed = Math.floor(Math.random() * 5000);
+
+		setseed(seed);
+	}, []);
+
+	const createChat = () => {
+		const roomName = prompt("Please Enter name or room");
+		console.log(roomName);
+	};
+
+	return !AddNewChat ? (
+		<SidebarCahtWrapper>
+			<Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
+			<SidebarCahtInfo>
+				<h2>Room name</h2>
+				<p>last message </p>
+			</SidebarCahtInfo>
+		</SidebarCahtWrapper>
+	) : (
+		<SidebarNewCaht onClick={createChat}>
+			<div>
+				<h1>ADD NEW CHAT</h1>
+			</div>
+		</SidebarNewCaht>
+	);
 };
 
 export default SidebarCaht;
 
 const SidebarCahtWrapper = styled.div`
-  display: flex;
-  padding: 20px;
-  border: 1px solid #f6f6f6;
-  cursor: pointer;
+	display: flex;
+	padding: 20px;
+	border: 1px solid #f6f6f6;
+	cursor: pointer;
 
-  .MuiSvgIcon-root {
-    color: gray;
-    margin: 0 10px;
-  }
+	.MuiSvgIcon-root {
+		color: gray;
+		margin: 0 10px;
+	}
 
-  :hover {
-    background-color: #ebebeb;
-  }
+	:hover {
+		background-color: #ebebeb;
+	}
 `;
 
 const SidebarCahtInfo = styled.div`
-  padding: 15px;
+	padding: 15px;
+`;
+
+const SidebarNewCaht = styled.div`
+	display: flex;
+	padding: 20px;
+	border: 1px solid #f6f6f6;
+	cursor: pointer;
+	:hover {
+		background-color: #ebebeb;
+	}
 `;
