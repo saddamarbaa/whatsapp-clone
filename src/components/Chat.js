@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Avatar, IconButton } from "@material-ui/core";
+import MicIcon from "@material-ui/icons/Mic";
 import {
 	AttachFile,
 	InsertEmoticon,
@@ -15,6 +16,7 @@ const Chat = () => {
 
 	const sendMessage = (event) => {
 		event.preventDefault();
+		console.log(input);
 	};
 
 	return (
@@ -50,14 +52,18 @@ const Chat = () => {
 			</ChatBody>
 			<ChatFooter>
 				<InsertEmoticon />
-				ok
 				<form>
 					<input
 						type='text'
 						value={input}
-						placeholder='Type Your messsgr'
+						placeholder='Type Your message'
+						onChange={(event) => setInput(event.target.value)}
 					/>
+					<button
+						type='submit'
+						onClick={(event) => sendMessage(event)}></button>
 				</form>
+				<MicIcon />
 			</ChatFooter>
 		</ChatWrapper>
 	);
@@ -108,14 +114,6 @@ const ChatBody = styled.div`
 	overflow: scroll;
 `;
 
-const ChatFooter = styled.div`
-	height: 62px;
-	input {
-		flex: 1;
-		padding: 10px;
-	}
-`;
-
 const ChatMessage = styled.p`
 	background: cadetblue;
 	font-size: 16px;
@@ -138,10 +136,43 @@ const ChatName = styled.span`
 	top: -18px;
 	color: black;
 	font-weight: 800;
-	font-size: x-small;
+	font-size: xx-small;
 `;
 
 const ChatTimeStamp = styled.span`
 	margin-left: 10px;
 	font-size: xx-small;
+`;
+
+const ChatFooter = styled.div`
+	height: 62px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid lightgray;
+
+	form {
+		display: flex;
+		flex: 1;
+	}
+
+	input {
+		flex: 1;
+		padding: 10px;
+		border-radius: 30px;
+		border: none;
+	}
+
+	input:focus {
+		outline: none;
+	}
+
+	button {
+		display: none;
+	}
+
+	.MuiSvgIcon-root {
+		padding: 10px;
+		color: gray;
+	}
 `;
