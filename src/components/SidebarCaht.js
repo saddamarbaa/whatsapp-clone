@@ -30,7 +30,7 @@ const SidebarCaht = ({ AddNewChat }) => {
 	) : (
 		<SidebarNewCaht onClick={createChat}>
 			<div>
-				<h2>ADD NEW CHAT</h2>
+				<h2>Add new chat</h2>
 			</div>
 		</SidebarNewCaht>
 	);

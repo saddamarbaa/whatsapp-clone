@@ -1,11 +1,22 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Avatar, IconButton } from "@material-ui/core";
-import { AttachFile, MoreVert, SearchOutlined } from "@material-ui/icons";
+import {
+	AttachFile,
+	InsertEmoticon,
+	MoreVert,
+	SearchOutlined,
+} from "@material-ui/icons";
 
 const Chat = () => {
+	const [input, setInput] = useState("");
+
+	const sendMessage = (event) => {
+		event.preventDefault();
+	};
+
 	return (
 		<ChatWrapper>
 			<ChatHeader>
@@ -27,8 +38,27 @@ const Chat = () => {
 				</ChatHeaderRight>
 			</ChatHeader>
 
-			<ChatBody> For test</ChatBody>
-			<ChatFooter>footer</ChatFooter>
+			<ChatBody>
+				<ChatMessage>
+					<ChatName>Saddam</ChatName> hi my friend
+					<ChatTimeStamp> 07:00pm</ChatTimeStamp>
+				</ChatMessage>
+				<ChatReciver>
+					<ChatName>Saddam</ChatName> hi my
+					<ChatTimeStamp> 07:00pm</ChatTimeStamp>
+				</ChatReciver>
+			</ChatBody>
+			<ChatFooter>
+				<InsertEmoticon />
+				ok
+				<form>
+					<input
+						type='text'
+						value={input}
+						placeholder='Type Your messsgr'
+					/>
+				</form>
+			</ChatFooter>
 		</ChatWrapper>
 	);
 };
@@ -80,4 +110,38 @@ const ChatBody = styled.div`
 
 const ChatFooter = styled.div`
 	height: 62px;
+	input {
+		flex: 1;
+		padding: 10px;
+	}
+`;
+
+const ChatMessage = styled.p`
+	background: cadetblue;
+	font-size: 16px;
+	padding: 10px;
+	font-weight: bold;
+	border-radius: 10px;
+	width: fit-content;
+	margin-bottom: 30px;
+	position: relative;
+	color: white;
+`;
+
+const ChatReciver = styled(ChatMessage)`
+	background: pink;
+	margin-left: auto;
+`;
+
+const ChatName = styled.span`
+	position: absolute;
+	top: -18px;
+	color: black;
+	font-weight: 800;
+	font-size: x-small;
+`;
+
+const ChatTimeStamp = styled.span`
+	margin-left: 10px;
+	font-size: xx-small;
 `;
