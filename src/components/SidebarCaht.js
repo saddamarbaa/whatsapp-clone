@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 import styled from "styled-components";
 
-const SidebarCaht = ({ AddNewChat }) => {
+const SidebarCaht = ({ id, name, AddNewChat }) => {
 	const [seed, setseed] = useState("");
 
 	useEffect(() => {
@@ -23,7 +23,7 @@ const SidebarCaht = ({ AddNewChat }) => {
 		<SidebarCahtWrapper>
 			<Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
 			<SidebarCahtInfo>
-				<h2>Room name</h2>
+				<h2> {name}</h2>
 				<p>last message </p>
 			</SidebarCahtInfo>
 		</SidebarCahtWrapper>

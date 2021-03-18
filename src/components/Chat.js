@@ -16,9 +16,9 @@ const Chat = () => {
 
 	const sendMessage = (event) => {
 		event.preventDefault();
-		console.log(input);
+		console.log("final Value is ", input);
 	};
-
+	console.log(input);
 	return (
 		<ChatWrapper>
 			<ChatHeader>

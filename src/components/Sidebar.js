@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge";
 import ChatIcon from "@material-ui/icons/Chat";
@@ -8,8 +8,28 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SearchSharpIcon from "@material-ui/icons/SearchSharp";
 import { Avatar, IconButton } from "@material-ui/core";
 import SidebarCaht from "./SidebarCaht";
+import db from "../Firebase";
 
 const Sidebar = () => {
+	const [rooms, setRooms] = useState([]);
+
+	useEffect(() => {
+		db.collection("rooms").onSnapshot((snapshot) => {
+			// console.log(snapshot.docs.map((doc) => doc.data()));
+			// const testing = snapshot.docs.map((doc) =>
+			// 	console.log("id :", doc.id, "\n Date :", doc.data()),
+
+			setRooms(
+				snapshot.docs.map((doc) => {
+					return {
+						id: doc.id,
+						data: doc.data(),
+					};
+				}),
+			);
+		});
+	}, []);
+
 	return (
 		<SidebarWrapper>
 			<SidebarHeader>
@@ -35,9 +55,15 @@ const Sidebar = () => {
 
 			<SidebarCahtContainer>
 				<SidebarCaht AddNewChat />
-				<SidebarCaht />
-				<SidebarCaht />
-				<SidebarCaht />
+				{rooms.map((room) => {
+					return (
+						<SidebarCaht
+							key={room.id}
+							id={room.id}
+							name={room.data.name}
+						/>
+					);
+				})}
 			</SidebarCahtContainer>
 		</SidebarWrapper>
 	);
