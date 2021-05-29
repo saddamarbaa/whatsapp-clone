@@ -18,7 +18,7 @@ const Chat = () => {
 		event.preventDefault();
 		console.log("final Value is ", input);
 	};
-	console.log(input);
+
 	return (
 		<ChatWrapper>
 			<ChatHeader>
@@ -41,14 +41,11 @@ const Chat = () => {
 			</ChatHeader>
 
 			<ChatBody>
-				<ChatMessage>
-					<ChatName>Saddam</ChatName> hi my friend
-					<ChatTimeStamp> 07:00pm</ChatTimeStamp>
-				</ChatMessage>
-				<ChatReciver>
-					<ChatName>Saddam</ChatName> hi my
-					<ChatTimeStamp> 07:00pm</ChatTimeStamp>
-				</ChatReciver>
+				<p className={`chat__message ${true && "chat__receiver"}`}>
+					Hey Guys
+					<span className='chat__name'>Saddam</span>
+					<span className='chat__timestamp'>07:00pm</span>
+				</p>
 			</ChatBody>
 			<ChatFooter>
 				<InsertEmoticon />
@@ -90,10 +87,19 @@ const ChatHeaderInfo = styled.div`
 
 	h3 {
 		margin-bottom: 3px;
+		font-weight: 500;
+
+		@media (max-width: 768px) {
+			display: none;
+		}
 	}
 
 	p {
 		color: gray;
+
+		@media (max-width: 360px) {
+			display: none;
+		}
 	}
 `;
 
@@ -101,7 +107,6 @@ const ChatHeaderRight = styled.div`
 	display: flex;
 	justify-content: space-between;
 	min-width: 100px;
-	background: pink;
 `;
 
 const ChatBody = styled.div`
@@ -112,36 +117,6 @@ const ChatBody = styled.div`
 	flex: 1;
 	padding: 30px;
 	overflow: scroll;
-`;
-
-const ChatMessage = styled.p`
-	background: cadetblue;
-	font-size: 16px;
-	padding: 10px;
-	font-weight: bold;
-	border-radius: 10px;
-	width: fit-content;
-	margin-bottom: 30px;
-	position: relative;
-	color: white;
-`;
-
-const ChatReciver = styled(ChatMessage)`
-	background: pink;
-	margin-left: auto;
-`;
-
-const ChatName = styled.span`
-	position: absolute;
-	top: -18px;
-	color: black;
-	font-weight: 800;
-	font-size: xx-small;
-`;
-
-const ChatTimeStamp = styled.span`
-	margin-left: 10px;
-	font-size: xx-small;
 `;
 
 const ChatFooter = styled.div`
@@ -161,6 +136,7 @@ const ChatFooter = styled.div`
 		padding: 10px;
 		border-radius: 30px;
 		border: none;
+		padding: 10px 20px !important;
 	}
 
 	input:focus {

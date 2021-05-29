@@ -49,7 +49,7 @@ const Sidebar = () => {
 			<SidebarSearch>
 				<SidebarSearchContainer>
 					<SearchSharpIcon />
-					<input type='text' placeholder='search or start a new room' />
+					<input type='text' placeholder='Search or start anew room' />
 				</SidebarSearchContainer>
 			</SidebarSearch>
 
@@ -75,24 +75,32 @@ const SidebarWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	flex: 0.35;
+	min-width: 220px;
 	background-color: white;
+
+	@media (max-width: 578px) {
+		display: none;
+	}
 `;
 
 const SidebarHeader = styled.div`
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	padding: 20px;
 	border-right: 1px solid lightgray;
+	background-color: #ededed;
 `;
 
 const SidebarHeaderRight = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: white;
 	min-width: 10vw;
+	background-color: #ededed;
 
 	.MuiSvgIcon-root {
+		margin-right: 10px;
 		font-size: 24px !important;
 	}
 `;
@@ -115,15 +123,15 @@ const SidebarSearchContainer = styled.div`
 
 	.MuiSvgIcon-root {
 		color: gray;
-		margin: 0 10px;
+		padding: 0 10px;
 	}
 
 	input {
 		width: 100%;
-		padding: 10px;
+		padding: 10px 0;
 		outline: none;
 		border: none;
-		margin-left: 10px;
+		margin-left: 7px;
 	}
 
 	input:focus {
@@ -134,5 +142,5 @@ const SidebarSearchContainer = styled.div`
 
 const SidebarCahtContainer = styled.div`
 	flex: 1;
-	/* overflow: scroll; */
+	overflow: scroll;
 `;

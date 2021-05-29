@@ -2,7 +2,6 @@
 
 import { Avatar } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-
 import styled from "styled-components";
 
 const SidebarCaht = ({ id, name, AddNewChat }) => {
@@ -43,6 +42,7 @@ const SidebarCahtWrapper = styled.div`
 	padding: 20px;
 	border: 1px solid #f6f6f6;
 	cursor: pointer;
+	transition: 0.5s;
 
 	.MuiSvgIcon-root {
 		color: gray;
