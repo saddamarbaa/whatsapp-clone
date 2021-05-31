@@ -3,19 +3,34 @@
 import { Avatar } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import db from "../Firebase";
+import firebase from "firebase";
 
 const SidebarCaht = ({ id, name, AddNewChat }) => {
-	const [seed, setseed] = useState("");
+	const [seed, setSeed] = useState("");
 
 	useEffect(() => {
 		const seed = Math.floor(Math.random() * 5000);
 
-		setseed(seed);
+		setSeed(seed);
 	}, []);
 
 	const createChat = () => {
 		const roomName = prompt("Please Enter name or room");
-		console.log(roomName);
+
+		if (roomName) {
+			db.collection("rooms")
+				.add({
+					name: roomName,
+					timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+				})
+				.then((docRef) => {
+					console.log("Document written with ID: ", docRef.id);
+				})
+				.catch((error) => {
+					console.error("Error adding document: ", error);
+				});
+		}
 	};
 
 	return !AddNewChat ? (

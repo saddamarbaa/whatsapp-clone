@@ -14,20 +14,24 @@ const Sidebar = () => {
 	const [rooms, setRooms] = useState([]);
 
 	useEffect(() => {
-		db.collection("rooms").onSnapshot((snapshot) => {
-			// console.log(snapshot.docs.map((doc) => doc.data()));
-			// const testing = snapshot.docs.map((doc) =>
-			// 	console.log("id :", doc.id, "\n Date :", doc.data()),
+		const unsubscribe = db
+			.collection("rooms")
+			.orderBy("timestamp", "desc")
+			.limit(5)
+			.onSnapshot((snapshot) => {
+				setRooms(
+					snapshot.docs.map((doc) => {
+						return {
+							id: doc.id,
+							data: doc.data(),
+						};
+					}),
+				);
+			});
 
-			setRooms(
-				snapshot.docs.map((doc) => {
-					return {
-						id: doc.id,
-						data: doc.data(),
-					};
-				}),
-			);
-		});
+		return () => {
+			unsubscribe();
+		};
 	}, []);
 
 	return (
