@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import db from "../Firebase";
 import firebase from "firebase";
+import { Link } from "react-router-dom";
 
 const SidebarCaht = ({ id, name, AddNewChat }) => {
 	const [seed, setSeed] = useState("");
@@ -34,13 +35,17 @@ const SidebarCaht = ({ id, name, AddNewChat }) => {
 	};
 
 	return !AddNewChat ? (
-		<SidebarCahtWrapper>
-			<Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
-			<SidebarCahtInfo>
-				<h2> {name}</h2>
-				<p>last message </p>
-			</SidebarCahtInfo>
-		</SidebarCahtWrapper>
+		<StyledLink to to={`/rooms/${id}`}>
+			<SidebarCahtWrapper>
+				<Avatar
+					src={`https://avatars.dicebear.com/api/human/${seed}.svg`}
+				/>
+				<SidebarCahtInfo>
+					<h2> {name}</h2>
+					<p>last message </p>
+				</SidebarCahtInfo>
+			</SidebarCahtWrapper>
+		</StyledLink>
 	) : (
 		<SidebarNewCaht onClick={createChat}>
 			<div>
@@ -71,6 +76,14 @@ const SidebarCahtWrapper = styled.div`
 
 const SidebarCahtInfo = styled.div`
 	padding: 15px;
+	padding-right: 0px;
+	overflow-y: hidden;
+	max-height: 120px;
+
+	h2 {
+		padding-bottom: 5px;
+		font-size: 1.2em;
+	}
 `;
 
 const SidebarNewCaht = styled.div`
@@ -81,4 +94,9 @@ const SidebarNewCaht = styled.div`
 	:hover {
 		background-color: #ebebeb;
 	}
+`;
+
+const StyledLink = styled(Link)`
+	text-decoration: none;
+	color: black;
 `;

@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Avatar, IconButton } from "@material-ui/core";
 import MicIcon from "@material-ui/icons/Mic";
@@ -11,8 +11,35 @@ import {
 	SearchOutlined,
 } from "@material-ui/icons";
 
+import { useParams } from "react-router-dom";
+import db from "../Firebase";
+
 const Chat = () => {
 	const [input, setInput] = useState("");
+	const [roomName, setRoomName] = useState();
+	const [seed, setSeed] = useState("");
+	const { roomId } = useParams();
+
+	useEffect(() => {
+		const seed = Math.floor(Math.random() * 5000);
+		setSeed(seed);
+	}, roomId);
+
+	useEffect(() => {
+		let unsubscribe;
+		if (roomId) {
+			unsubscribe = db
+				.collection("rooms")
+				.doc(roomId)
+				.onSnapshot((snapshot) => {
+					setRoomName(snapshot.data().name);
+				});
+		}
+
+		return () => {
+			unsubscribe();
+		};
+	}, [roomId]);
 
 	const sendMessage = (event) => {
 		event.preventDefault();
@@ -24,10 +51,12 @@ const Chat = () => {
 	return (
 		<ChatWrapper>
 			<ChatHeader>
-				<Avatar />
+				<Avatar
+					src={`https://avatars.dicebear.com/api/human/${seed}.svg`}
+				/>
 				<ChatHeaderInfo>
-					<h3>Room name</h3>
-					<p>last seen at ...</p>
+					<h3>{roomName}</h3>
+					<p>last seen at</p>
 				</ChatHeaderInfo>
 				<ChatHeaderRight>
 					<IconButton>
@@ -139,7 +168,9 @@ const ChatFooter = styled.div`
 		border-radius: 30px;
 		border: none;
 		padding: 10px 20px !important;
-	}
+	}import { useState } from 'react';
+import { useEffect } from 'react';
+
 
 	input:focus {
 		outline: none;

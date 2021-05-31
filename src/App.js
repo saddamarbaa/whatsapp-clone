@@ -4,15 +4,26 @@ import styled from "styled-components";
 import React from "react";
 import Sidebar from "./components/Sidebar";
 import Chat from "./components/Chat";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const App = () => {
 	return (
-		<AppWrapper>
-			<AppBody>
-				<Sidebar />
-				<Chat />
-			</AppBody>
-		</AppWrapper>
+		<Router>
+			<Switch>
+				<AppWrapper>
+					<AppBody>
+						<Route path='/' exact>
+							<Sidebar />
+						</Route>
+
+						<Route path='/rooms/:roomId'>
+							<Sidebar />
+							<Chat />
+						</Route>
+					</AppBody>
+				</AppWrapper>
+			</Switch>
+		</Router>
 	);
 };
 
@@ -35,5 +46,6 @@ const AppBody = styled.div`
 	width: 90vw;
 	/* margin-top: -50px; */
 	box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.2);
+	margin-top: 20px;
 	margin-bottom: 50px;
 `;
