@@ -1,7 +1,7 @@
-==> Building WhatsApp Clone app with react Js, styled component, Material-UI, 
-    Firebase Google Authentication, Firebase Hosting, Firebase Realtime Database, React Context API 
-
-### <a href="https://whatsapp-clone-pwj.web.app">LIVE DEMO</a>
+#  Building WhatsApp
+Building WhatsApp Clone app with react Js, styled component, Material-UI, 
+ Firebase Google Authentication, Firebase Hosting, Firebase Realtime Database, 
+ React Context API 
 
 
 
