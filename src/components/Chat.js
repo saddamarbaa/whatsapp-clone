@@ -171,21 +171,13 @@ const ChatHeaderInfo = styled.div`
 	flex: 1;
 	padding-left: 20px;
 
+	@media (max-width: 768px) {
+		display: none;
+	}
+
 	h3 {
 		margin-bottom: 3px;
 		font-weight: 500;
-
-		@media (max-width: 768px) {
-			display: none;
-		}
-	}
-
-	p {
-		color: gray;
-
-		@media (max-width: 568px) {
-			display: none;
-		}
 	}
 `;
 
