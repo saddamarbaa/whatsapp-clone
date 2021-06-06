@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 const SidebarCaht = ({ id, name, AddNewChat }) => {
 	const [seed, setSeed] = useState("");
+	const [message, setMessage] = useState("");
 
 	useEffect(() => {
 		const seed = Math.floor(Math.random() * 5000);
@@ -26,23 +27,40 @@ const SidebarCaht = ({ id, name, AddNewChat }) => {
 					timestamp: firebase.firestore.FieldValue.serverTimestamp(),
 				})
 				.then((docRef) => {
-					console.log("Document written with ID: ", docRef.id);
+					// console.log("Document written with ID: ", docRef.id);
 				})
 				.catch((error) => {
-					console.error("Error adding document: ", error);
+					// console.error("Error adding document: ", error);
 				});
 		}
 	};
 
+	useEffect(() => {
+		if (id) {
+			db.collection("rooms")
+				.doc(id)
+				.collection("messages")
+				.orderBy("timestamp", "desc")
+				.limit(1)
+				.onSnapshot((snapshot) => {
+					setMessage(
+						snapshot.docs.map((doc) => {
+							return doc.data();
+						}),
+					);
+				});
+		}
+	}, [id]);
+
 	return !AddNewChat ? (
-		<StyledLink to to={`/rooms/${id}`}>
+		<StyledLink to={`/rooms/${id}`}>
 			<SidebarCahtWrapper>
 				<Avatar
 					src={`https://avatars.dicebear.com/api/human/${seed}.svg`}
 				/>
 				<SidebarCahtInfo>
 					<h2> {name}</h2>
-					<p>last message </p>
+					<p> {message[0]?.message} </p>
 				</SidebarCahtInfo>
 			</SidebarCahtWrapper>
 		</StyledLink>
@@ -80,6 +98,10 @@ const SidebarCahtInfo = styled.div`
 	overflow-y: hidden;
 	max-height: 120px;
 
+	@media (max-width: 578px) {
+		display: none;
+	}
+
 	h2 {
 		padding-bottom: 5px;
 		font-size: 1.2em;
@@ -93,6 +115,10 @@ const SidebarNewCaht = styled.div`
 	cursor: pointer;
 	:hover {
 		background-color: #ebebeb;
+	}
+
+	@media (max-width: 578px) {
+		font-size: 1rem;
 	}
 `;
 

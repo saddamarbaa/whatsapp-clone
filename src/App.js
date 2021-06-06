@@ -1,29 +1,37 @@
 /** @format */
 
 import styled from "styled-components";
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Chat from "./components/Chat";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Login from "./components/Login";
+import { useStateValue } from "./StateProvider";
 
 const App = () => {
-	return (
-		<Router>
-			<Switch>
-				<AppWrapper>
-					<AppBody>
-						<Route path='/' exact>
-							<Sidebar />
-						</Route>
+	const [{ user }, dispatch] = useStateValue();
 
-						<Route path='/rooms/:roomId'>
-							<Sidebar />
-							<Chat />
-						</Route>
-					</AppBody>
-				</AppWrapper>
-			</Switch>
-		</Router>
+	return (
+		<AppWrapper>
+			{!user ? (
+				<Login />
+			) : (
+				<Router>
+					<Switch>
+						<AppBody>
+							<Route path='/' exact>
+								<Sidebar />
+							</Route>
+
+							<Route path='/rooms/:roomId'>
+								<Sidebar />
+								<Chat />
+							</Route>
+						</AppBody>
+					</Switch>
+				</Router>
+			)}
+		</AppWrapper>
 	);
 };
 

@@ -4,6 +4,10 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Avatar, IconButton } from "@material-ui/core";
 import MicIcon from "@material-ui/icons/Mic";
+import { actionTypes } from "../reducer";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { v4 as uuidv4 } from "uuid";
+
 import {
 	AttachFile,
 	InsertEmoticon,
@@ -11,14 +15,18 @@ import {
 	SearchOutlined,
 } from "@material-ui/icons";
 
+import firebase from "firebase";
 import { useParams } from "react-router-dom";
 import db from "../Firebase";
+import { useStateValue } from "../StateProvider";
 
 const Chat = () => {
 	const [input, setInput] = useState("");
 	const [roomName, setRoomName] = useState();
 	const [seed, setSeed] = useState("");
 	const { roomId } = useParams();
+	const [messages, setMessages] = useState([]);
+	const [{ user }, dispatch] = useStateValue();
 
 	useEffect(() => {
 		const seed = Math.floor(Math.random() * 5000);
@@ -26,24 +34,52 @@ const Chat = () => {
 	}, roomId);
 
 	useEffect(() => {
-		let unsubscribe;
+		let unsubscribe1;
+		let unsubscribe2;
+
 		if (roomId) {
-			unsubscribe = db
+			unsubscribe1 = db
 				.collection("rooms")
 				.doc(roomId)
 				.onSnapshot((snapshot) => {
 					setRoomName(snapshot.data().name);
 				});
+
+			unsubscribe2 = db
+				.collection("rooms")
+				.doc(roomId)
+				.collection("messages")
+				.orderBy("timestamp", "desc")
+				.onSnapshot((snapshot) => {
+					setMessages(
+						snapshot.docs.map((doc) => {
+							return doc.data();
+						}),
+					);
+				});
 		}
 
 		return () => {
-			unsubscribe();
+			unsubscribe1();
+			unsubscribe2();
 		};
 	}, [roomId]);
 
+	const signOut = () => {
+		dispatch({
+			type: actionTypes.REMOVE_USER,
+			user: user,
+		});
+	};
+
 	const sendMessage = (event) => {
 		event.preventDefault();
-		console.log("final Value is ", input);
+
+		db.collection("rooms").doc(roomId).collection("messages").add({
+			message: input,
+			name: user.displayName,
+			timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+		});
 
 		setInput("");
 	};
@@ -56,7 +92,12 @@ const Chat = () => {
 				/>
 				<ChatHeaderInfo>
 					<h3>{roomName}</h3>
-					<p>last seen at</p>
+					<p>
+						last seen at{" "}
+						{new Date(
+							messages[messages.length - 1]?.timestamp?.toDate(),
+						).toUTCString()}
+					</p>
 				</ChatHeaderInfo>
 				<ChatHeaderRight>
 					<IconButton>
@@ -65,6 +106,10 @@ const Chat = () => {
 					<IconButton>
 						<AttachFile />
 					</IconButton>
+
+					<IconButton>
+						<ExitToAppIcon onClick={signOut} />
+					</IconButton>
 					<IconButton>
 						<MoreVert />
 					</IconButton>
@@ -72,11 +117,21 @@ const Chat = () => {
 			</ChatHeader>
 
 			<ChatBody>
-				<p className={`chat__message ${true && "chat__receiver"}`}>
-					Hey Guys
-					<span className='chat__name'>Saddam</span>
-					<span className='chat__timestamp'>07:00pm</span>
-				</p>
+				{messages.map((message) => {
+					return (
+						<p
+							key={uuidv4()}
+							className={`chat__message ${
+								message.name === user.displayName && "chat__receiver"
+							}`}>
+							{message.message}
+							<span className='chat__name'>{message.name}</span>
+							<span className='chat__timestamp'>
+								{new Date(message.timestamp?.toDate()).toUTCString()}
+							</span>
+						</p>
+					);
+				})}
 			</ChatBody>
 			<ChatFooter>
 				<InsertEmoticon />
@@ -128,7 +183,7 @@ const ChatHeaderInfo = styled.div`
 	p {
 		color: gray;
 
-		@media (max-width: 360px) {
+		@media (max-width: 568px) {
 			display: none;
 		}
 	}
@@ -137,7 +192,7 @@ const ChatHeaderInfo = styled.div`
 const ChatHeaderRight = styled.div`
 	display: flex;
 	justify-content: space-between;
-	min-width: 100px;
+	min-width: 200px;
 `;
 
 const ChatBody = styled.div`
@@ -168,9 +223,7 @@ const ChatFooter = styled.div`
 		border-radius: 30px;
 		border: none;
 		padding: 10px 20px !important;
-	}import { useState } from 'react';
-import { useEffect } from 'react';
-
+	}
 
 	input:focus {
 		outline: none;

@@ -9,8 +9,10 @@ import SearchSharpIcon from "@material-ui/icons/SearchSharp";
 import { Avatar, IconButton } from "@material-ui/core";
 import SidebarCaht from "./SidebarCaht";
 import db from "../Firebase";
+import { useStateValue } from "../StateProvider";
 
 const Sidebar = () => {
+	const [{ user }, dispatch] = useStateValue();
 	const [rooms, setRooms] = useState([]);
 
 	useEffect(() => {
@@ -37,7 +39,7 @@ const Sidebar = () => {
 	return (
 		<SidebarWrapper>
 			<SidebarHeader>
-				<Avatar />
+				<Avatar src={user?.photoURL} />
 				<SidebarHeaderRight>
 					<IconButton>
 						<DonutLargeIcon />
@@ -83,7 +85,7 @@ const SidebarWrapper = styled.div`
 	background-color: white;
 
 	@media (max-width: 578px) {
-		display: none;
+		min-width: 25vw;
 	}
 `;
 
@@ -103,6 +105,10 @@ const SidebarHeaderRight = styled.div`
 	min-width: 10vw;
 	background-color: #ededed;
 
+	@media (max-width: 578px) {
+		display: none;
+	}
+
 	.MuiSvgIcon-root {
 		margin-right: 10px;
 		font-size: 24px !important;
@@ -115,6 +121,10 @@ const SidebarSearch = styled.div`
 	background-color: #f6f6f6;
 	height: 39px;
 	padding: 10px;
+
+	@media (max-width: 578px) {
+		display: none;
+	}
 `;
 
 const SidebarSearchContainer = styled.div`
