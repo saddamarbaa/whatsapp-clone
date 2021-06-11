@@ -1,27 +1,151 @@
-#  Building WhatsApp
-Building WhatsApp Clone app with react Js, styled component, Material-UI, 
- Firebase Google Authentication, Firebase Hosting, Firebase Realtime Database, 
- React Context API 
+# WhatsApp Clone
+
+ Building WhatsApp Clone App with React Js, Styled Component, 
+ React Context API, Material-UI, Google Authentication, Firebase Hosting, 
+ Firebase Realtime Database, (a mobile-friendly) 
+ 
+
+ ## Table of contents
+* [Author](#Author)
+* [Demo](#Demo)
+* [Tech Stack](#Technologies)
+* [Optimizations](#Optimizations)
+* [Contributing](#Contributing)
+* [Features](#features)
+* [Status](#status)
+* [Inspiration](#inspiration)
+* [Support](#Support)
+* [Screenshots](#Screenshots)
+* [Feedback](#Feedback)
+
+
+ 
+ ### Author
+
+- [@Saddam Arbaa](https://github.com/saddamarbaa)
+
+
+### Contributing
+
+Contributions are always welcome!
 
 
 
-
-# <a href="https://whatsapp-clone-pwj.web.app">Live Demo </a>
-<!-- # <a href="https://whatsapp-clone-pwj.web.app"> Live Video Demo </a> -->
+###  Demo
 
 
+#### <a href="https://whatsapp-clone-pwj.web.app">Live Demo </a>
+<!-- #### <a href="https://www.loom.com/share/59bd9d98bd2645c89f12ffcff122b98f"> Live Video Demo </a> -->
 
-# responsive on large screens
+
+### Technologies
+
+**Client:**  
+
+* React Js 
+* React Context API 
+* Material-UI
+* Styled Component 
+
+**Server:** 
+* Firebase Realtime Database
+* Firebase Hosting
+* Firebase Google Authentication
+
+
+# Features
+-  Google Authentication
+-  Users can sign in, sign out
+-  Create a room
+-  Chat (Realtime Chat)
+
+
+
+### Optimizations
+- function components
+- React hooks
+- React useEffect cleanup
+
+
+
+### Support
+
+For support, email saddamarbaas@gmail.com.
+
+
+### Feedback
+
+If you have any feedback, please reach out to me at saddamarbaas@gmail.com
+
+  
+Twitter
+https://twitter.com/ArbaaSaddam/
+
+Linkedin.
+https://www.linkedin.com/in/saddamarbaa/
+
+Github
+https://github.com/saddamarbaa
+
+Instagram
+https://www.instagram.com/saddam.dev/
+
+Facebook
+https://www.facebook.com/saddam.arbaa
+
+
+  
+### Run Locally
+
+Clone the project
+
+```bash
+  https://github.com/saddamarbaa/whatsapp-clone.git
+```
+
+Go to the project directory
+
+```bash
+  cd whatsapp-clone
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm  start
+
+
+```
+
+### Status
+Project is: _in progress_
+Project is complete
+
+
+### Inspiration
+Build By Saddam Arbaa Project inspired by [whatsapp] https://web.whatsapp.com/
+
+
+### Screenshots
+
+
+#### Responsive on large screens
 
 ![image](https://user-images.githubusercontent.com/51326421/120909257-687b2c80-c69d-11eb-87a3-9ddd58cfb20d.png)
 
 
-# responsive on small screens
+#### Responsive on small screens
 
 ![image](https://user-images.githubusercontent.com/51326421/120909272-98c2cb00-c69d-11eb-9b14-ec7a923856da.png)
 
 
-# Sign in page
+#### Sign in page
 
 ![image](https://user-images.githubusercontent.com/51326421/120909395-e0962200-c69e-11eb-81e1-250eec650fc5.png)
 
