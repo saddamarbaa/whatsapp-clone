@@ -43,7 +43,6 @@ const AppWrapper = styled.div`
 	display: grid;
 	/* place-items: center; */
 	justify-content: center;
-
 	background: #dadbd3;
 `;
 
