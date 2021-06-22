@@ -10,6 +10,7 @@
 -  [Author](#Author)
 -  [Demo](#Demo)
 -  [Technologies](#Technologies)
+-  [Features](#Features)
 -  [Optimizations](#Optimizations)
 -  [Contributing](#Contributing)
 -  [Status](#status)
@@ -20,6 +21,7 @@
 -  [Run Locally](#Run_Locally)
 -  [Environment Variables](#Environment)
 -  [Deployment](#Deployment)
+
 
 # Author
 
@@ -46,6 +48,11 @@
 
 ## <a href="https://whatsapp-clone-pwj.web.app">LIVE DEMO</a>
 
+
+# Features
+-  Users can sign in
+-  Create rooms
+-  Chat with their friend
 
 
 # Optimizations
