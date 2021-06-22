@@ -19,7 +19,7 @@ const Sidebar = () => {
 		const unsubscribe = db
 			.collection("rooms")
 			.orderBy("timestamp", "desc")
-			.limit(5)
+			.limit(10)
 			.onSnapshot((snapshot) => {
 				setRooms(
 					snapshot.docs.map((doc) => {

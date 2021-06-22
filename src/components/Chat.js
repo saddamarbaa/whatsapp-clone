@@ -50,6 +50,7 @@ const Chat = () => {
 				.doc(roomId)
 				.collection("messages")
 				.orderBy("timestamp", "desc")
+				.limit(100)
 				.onSnapshot((snapshot) => {
 					setMessages(
 						snapshot.docs.map((doc) => {
@@ -185,6 +186,10 @@ const ChatHeaderRight = styled.div`
 	display: flex;
 	justify-content: space-between;
 	min-width: 200px;
+
+	@media (max-width: 768px) {
+		flex: 1;
+	}
 `;
 
 const ChatBody = styled.div`
@@ -194,7 +199,7 @@ const ChatBody = styled.div`
 	flex-direction: column;
 	flex: 1;
 	padding: 30px;
-	overflow: scroll;
+	overflow: scroll !important;
 `;
 
 const ChatFooter = styled.div`
