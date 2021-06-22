@@ -2,82 +2,71 @@
 
  Building WhatsApp Clone App with React Js, Styled Component, 
  React Context API, Material-UI, Google Authentication, Firebase Hosting, 
- Firebase Realtime Database, (a mobile-friendly) 
+ Firebase Realtime Database, (a mobile-friendly)
  
 
- ## Table of contents
-* [Author](#Author)
-* [Demo](#Demo)
-* [Tech Stack](#Technologies)
-* [Optimizations](#Optimizations)
-* [Contributing](#Contributing)
-* [Features](#features)
-* [Status](#status)
-* [Inspiration](#inspiration)
-* [Support](#Support)
-* [Screenshots](#Screenshots)
-* [Feedback](#Feedback)
+# Table of contents
+
+-  [Author](#Author)
+-  [Demo](#Demo)
+-  [Technologies](#Technologies)
+-  [Optimizations](#Optimizations)
+-  [Contributing](#Contributing)
+-  [Status](#status)
+-  [Inspiration](#inspiration)
+-  [Support](#Support)
+-  [Feedback](#Feedback)
+-  [Screenshots](#Screenshots)
+-  [Run Locally](#Run_Locally)
+-  [Environment Variables](#Environment)
+-  [Deployment](#Deployment)
+
+# Author
+
+### <a href="https://github.com/saddamarbaa">@Saddam Arbaa</a>
+
+# Technologies
+
+**Client:**
+
+-  React Js
+-  React Context API
+-  Styled Component
+-  Material-UI
+
+**Server:**
+
+-  Firebase Realtime Database
+-  Firebase Hosting
+-  Firebase Google Authentication
 
 
- 
- ### Author
 
-- [@Saddam Arbaa](https://github.com/saddamarbaa)
+# Demo
+
+## <a href="https://whatsapp-clone-pwj.web.app">LIVE DEMO</a>
 
 
-### Contributing
+
+# Optimizations
+
+-  Code-Splitting – React
+-  Function components
+-  React hooks
+-  React useEffect cleanup
+
+# Contributing
 
 Contributions are always welcome!
 
-
-
-###  Demo
-
-
-#### <a href="https://whatsapp-clone-pwj.web.app">Live Demo </a>
-<!-- #### <a href="https://www.loom.com/share/59bd9d98bd2645c89f12ffcff122b98f"> Live Video Demo </a> -->
-
-
-### Technologies
-
-**Client:**  
-
-* React Js 
-* React Context API 
-* Material-UI
-* Styled Component 
-
-**Server:** 
-* Firebase Realtime Database
-* Firebase Hosting
-* Firebase Google Authentication
-
-
-# Features
--  Google Authentication
--  Users can sign in, sign out
--  Create a room
--  Chat (Realtime Chat)
-
-
-
-### Optimizations
-- function components
-- React hooks
-- React useEffect cleanup
-
-
-
-### Support
+# Support
 
 For support, email saddamarbaas@gmail.com.
 
-
-### Feedback
+# Feedback
 
 If you have any feedback, please reach out to me at saddamarbaas@gmail.com
 
-  
 Twitter
 https://twitter.com/ArbaaSaddam/
 
@@ -93,14 +82,12 @@ https://www.instagram.com/saddam.dev/
 Facebook
 https://www.facebook.com/saddam.arbaa
 
-
-  
-### Run Locally
+# Run_Locally
 
 Clone the project
 
 ```bash
-  https://github.com/saddamarbaa/whatsapp-clone.git
+  https://github.com/saddamarbaa/whatsapp-clone
 ```
 
 Go to the project directory
@@ -118,34 +105,55 @@ Install dependencies
 Start the server
 
 ```bash
-  npm  start
+  npm start
 
 
 ```
 
-### Status
-Project is: _in progress_
-Project is complete
+# Environment
 
+- To run this project, you will need to create a new project on firebase, setup Firebase Realtime Database and add the following environment variables to your .env file
 
-### Inspiration
+-  REACT_APP_FIREBASE_API_KEY
+-  REACT_APP_AUTH_DOMAIN
+-  REACT_APP_STORAGE_BUCKET
+-  REACT_APP_PROJECT_ID
+-  REACT_APP_MESSAIN_SENDER_ID
+-  REACT_APP_APPID
+
+# Status
+
+Project is: in progress I'm working on it in my free time
+
+# Inspiration
+
 Build By Saddam Arbaa Project inspired by [whatsapp] https://web.whatsapp.com/
 
 
-### Screenshots
+# Deployment
+
+To deploy this project on firebase Flow the firebase documentation <a href="https://firebase.google.com/docs">Firebase Documentation</a>
+
+-  create a new project on firebase
+-  npm install -g firebase-tools
+-  firebase init
+-  npm run build
+-  firebase deploy
+
+# Screenshots
+
+## Responsive on large screens
+
+![image](https://user-images.githubusercontent.com/51326421/122919368-59c59280-d38a-11eb-987e-692a42c85967.png)
 
 
-#### Responsive on large screens
 
-![image](https://user-images.githubusercontent.com/51326421/120909257-687b2c80-c69d-11eb-87a3-9ddd58cfb20d.png)
-
-
-#### Responsive on small screens
+## Responsive on small screens
 
 ![image](https://user-images.githubusercontent.com/51326421/120909272-98c2cb00-c69d-11eb-9b14-ec7a923856da.png)
 
 
-#### Sign in page
+## Sign in page
 
 ![image](https://user-images.githubusercontent.com/51326421/120909395-e0962200-c69e-11eb-81e1-250eec650fc5.png)
 
